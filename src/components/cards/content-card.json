@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_cards_content_cards",
+  "info": {
+    "displayName": "Content Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks"
+    },
+    "ReadmoreLink": {
+      "type": "string"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
