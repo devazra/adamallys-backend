@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_cards_why_choose_cards",
+  "info": {
+    "displayName": "why choose card"
+  },
+  "options": {},
+  "attributes": {
+    "tile": {
+      "type": "string"
+    },
+    "info": {
+      "type": "text"
+    }
+  }
+}

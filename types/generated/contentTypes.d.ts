@@ -419,6 +419,80 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCertificationsAndMembershipsPageCertificationsAndMembershipsPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'certifications_and_memberships_pages';
+  info: {
+    description: '';
+    displayName: 'Certifications & Memberships Page';
+    pluralName: 'certifications-and-memberships-pages';
+    singularName: 'certifications-and-memberships-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Certifications: Schema.Attribute.Component<
+      'cards.certifications-and-memberships',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::certifications-and-memberships-page.certifications-and-memberships-page'
+    > &
+      Schema.Attribute.Private;
+    Memberships: Schema.Attribute.Component<
+      'cards.certifications-and-memberships',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDistributorsAndStockistsPageDistributorsAndStockistsPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'distributors_and_stockists_pages';
+  info: {
+    description: '';
+    displayName: 'Distributors & Stockists Page';
+    pluralName: 'distributors-and-stockists-pages';
+    singularName: 'distributors-and-stockists-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banner: Schema.Attribute.Component<
+      'banner.distributors-stockists-banner',
+      false
+    >;
+    Cards: Schema.Attribute.Component<
+      'cards.distributors-and-stockists-card',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::distributors-and-stockists-page.distributors-and-stockists-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -597,6 +671,100 @@ export interface ApiNewsAndEventNewsAndEvent
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOtherServiceOtherService extends Struct.SingleTypeSchema {
+  collectionName: 'other_services';
+  info: {
+    description: '';
+    displayName: 'Other Services';
+    pluralName: 'other-services';
+    singularName: 'other-service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::other-service.other-service'
+    > &
+      Schema.Attribute.Private;
+    OtherServices: Schema.Attribute.Component<'cards.why-choose-card', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiShipSupplyPageShipSupplyPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'ship_supply_pages';
+  info: {
+    description: '';
+    displayName: 'Ship Supply Page';
+    pluralName: 'ship-supply-pages';
+    singularName: 'ship-supply-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ship-supply-page.ship-supply-page'
+    > &
+      Schema.Attribute.Private;
+    Product_and_service: Schema.Attribute.Component<'cards.service-card', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWhyChooseAdamallyWhyChooseAdamally
+  extends Struct.SingleTypeSchema {
+  collectionName: 'why_choose_adamallys';
+  info: {
+    description: '';
+    displayName: 'Why Choose Adamallys';
+    pluralName: 'why-choose-adamallys';
+    singularName: 'why-choose-adamally';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::why-choose-adamally.why-choose-adamally'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WhyChoose: Schema.Attribute.Component<'cards.why-choose-card', true>;
   };
 }
 
@@ -1110,11 +1278,16 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::certifications-and-memberships-page.certifications-and-memberships-page': ApiCertificationsAndMembershipsPageCertificationsAndMembershipsPage;
+      'api::distributors-and-stockists-page.distributors-and-stockists-page': ApiDistributorsAndStockistsPageDistributorsAndStockistsPage;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::milestone-section.milestone-section': ApiMilestoneSectionMilestoneSection;
       'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
+      'api::other-service.other-service': ApiOtherServiceOtherService;
+      'api::ship-supply-page.ship-supply-page': ApiShipSupplyPageShipSupplyPage;
+      'api::why-choose-adamally.why-choose-adamally': ApiWhyChooseAdamallyWhyChooseAdamally;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
