@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_cards_content_cards",
+  "collectionName": "components_cards_marine_ropes_cards",
   "info": {
-    "displayName": "Content Card",
+    "displayName": "Marine Ropes Card",
     "description": ""
   },
   "options": {},
@@ -9,10 +9,10 @@
     "title": {
       "type": "string"
     },
-    "Content": {
-      "type": "blocks"
+    "info": {
+      "type": "text"
     },
-    "Image": {
+    "Images": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -23,8 +23,10 @@
         "audios"
       ]
     },
-    "link": {
-      "type": "string"
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.why-choose-card"
     }
   }
 }

@@ -419,6 +419,36 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'categories';
+  info: {
+    displayName: 'Category';
+    pluralName: 'categories';
+    singularName: 'category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCertificationsAndMembershipsPageCertificationsAndMembershipsPage
   extends Struct.SingleTypeSchema {
   collectionName: 'certifications_and_memberships_pages';
@@ -450,6 +480,74 @@ export interface ApiCertificationsAndMembershipsPageCertificationsAndMemberships
       true
     >;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
+  collectionName: 'contact_pages';
+  info: {
+    displayName: 'Contact Page';
+    pluralName: 'contact-pages';
+    singularName: 'contact-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AddressOne: Schema.Attribute.String;
+    AddressTwo: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.String;
+    Fax: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    > &
+      Schema.Attribute.Private;
+    MobileNumber: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDigitalizationAndTechnologyAtAdamallysPageDigitalizationAndTechnologyAtAdamallysPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'digitalization_and_technology_at_adamallys_pages';
+  info: {
+    description: '';
+    displayName: 'Digitalization & Technology at Adamallys Page';
+    pluralName: 'digitalization-and-technology-at-adamallys-pages';
+    singularName: 'digitalization-and-technology-at-adamallys-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banner_Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Banner_Info: Schema.Attribute.String;
+    Banner_Title: Schema.Attribute.String;
+    Content_Cards: Schema.Attribute.Component<'cards.content-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::digitalization-and-technology-at-adamallys-page.digitalization-and-technology-at-adamallys-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -490,6 +588,49 @@ export interface ApiDistributorsAndStockistsPageDistributorsAndStockistsPage
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDryDockingServicePageDryDockingServicePage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'dry_docking_service_pages';
+  info: {
+    description: '';
+    displayName: 'Dry Docking Service Page';
+    pluralName: 'dry-docking-service-pages';
+    singularName: 'dry-docking-service-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_background_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    banner_info: Schema.Attribute.Text;
+    banner_title: Schema.Attribute.String;
+    cards: Schema.Attribute.Component<
+      'cards.distributors-and-stockists-card',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dry-docking-service-page.dry-docking-service-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Why_Choose_Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Why_Choose_info: Schema.Attribute.Text;
+    Why_Choose_Title: Schema.Attribute.String;
   };
 }
 
@@ -588,7 +729,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Hero: Schema.Attribute.Component<'banner.landing-page-video-slider', false>;
+    Hero: Schema.Attribute.Component<'banner.landing-page-video-slider', true>;
     Icons: Schema.Attribute.Component<'navigation.icon', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -603,6 +744,117 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     Our_Company_Content: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     ServiceCard: Schema.Attribute.Component<'cards.service-card', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiIndustrialAndEnergySectorSuppliesPageIndustrialAndEnergySectorSuppliesPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'industrial_and_energy_sector_supplies_pages';
+  info: {
+    displayName: 'Industrial & Energy Sector Supplies Page';
+    pluralName: 'industrial-and-energy-sector-supplies-pages';
+    singularName: 'industrial-and-energy-sector-supplies-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    info: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::industrial-and-energy-sector-supplies-page.industrial-and-energy-sector-supplies-page'
+    > &
+      Schema.Attribute.Private;
+    Our_Key_Product_Offerings: Schema.Attribute.Component<
+      'cards.why-choose-card',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Video: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    video_title: Schema.Attribute.String;
+  };
+}
+
+export interface ApiMarineLogisticsAndWarehousingPageMarineLogisticsAndWarehousingPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'marine_logistics_and_warehousing_pages';
+  info: {
+    description: '';
+    displayName: 'Marine logistics & warehousing page';
+    pluralName: 'marine-logistics-and-warehousing-pages';
+    singularName: 'marine-logistics-and-warehousing-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cards: Schema.Attribute.Component<'cards.why-choose-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    list: Schema.Attribute.Component<'cards.why-choose-card', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::marine-logistics-and-warehousing-page.marine-logistics-and-warehousing-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sub_title: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    video_title: Schema.Attribute.String;
+    Warehousing_info: Schema.Attribute.Text;
+    Warehousing_videos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+  };
+}
+
+export interface ApiMarineRopesAndMooringRopesPageMarineRopesAndMooringRopesPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'marine_ropes_and_mooring_ropes_pages';
+  info: {
+    description: '';
+    displayName: 'Marine Ropes & Mooring Ropes Page';
+    pluralName: 'marine-ropes-and-mooring-ropes-pages';
+    singularName: 'marine-ropes-and-mooring-ropes-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_backeground_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    banner_info: Schema.Attribute.Text;
+    banner_title: Schema.Attribute.String;
+    Card: Schema.Attribute.Component<'cards.marine-ropes-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::marine-ropes-and-mooring-ropes-page.marine-ropes-and-mooring-ropes-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -704,6 +956,146 @@ export interface ApiOtherServiceOtherService extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPrivacyPolicyPagePrivacyPolicyPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'privacy_policy_pages';
+  info: {
+    description: '';
+    displayName: 'Privacy Policy Page';
+    pluralName: 'privacy-policy-pages';
+    singularName: 'privacy-policy-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'cards.title-contnet', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::privacy-policy-page.privacy-policy-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'products';
+  info: {
+    description: '';
+    displayName: 'Product';
+    pluralName: 'products';
+    singularName: 'product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category.category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product.product'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    SKU: Schema.Attribute.String;
+    Slug: Schema.Attribute.UID<'Title'>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProvisionsAndBondedStoresPageProvisionsAndBondedStoresPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'provisions_and_bonded_stores_pages';
+  info: {
+    displayName: 'Provisions & Bonded Stores Page';
+    pluralName: 'provisions-and-bonded-stores-pages';
+    singularName: 'provisions-and-bonded-stores-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_background_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    banner_info: Schema.Attribute.Text;
+    banner_title: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::provisions-and-bonded-stores-page.provisions-and-bonded-stores-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiShipSparePartsPageShipSparePartsPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'ship_spare_parts_pages';
+  info: {
+    description: '';
+    displayName: 'Ship Spare Parts Page';
+    pluralName: 'ship-spare-parts-pages';
+    singularName: 'ship-spare-parts-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_background_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    banner_Info: Schema.Attribute.Text;
+    banner_title: Schema.Attribute.String;
+    Cards: Schema.Attribute.Component<'cards.content-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ship-spare-parts-page.ship-spare-parts-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Why_Choose_Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Why_Choose_Info: Schema.Attribute.Text;
+    Why_Choose_Title: Schema.Attribute.String;
+  };
+}
+
 export interface ApiShipSupplyPageShipSupplyPage
   extends Struct.SingleTypeSchema {
   collectionName: 'ship_supply_pages';
@@ -730,6 +1122,90 @@ export interface ApiShipSupplyPageShipSupplyPage
     Product_and_service: Schema.Attribute.Component<'cards.service-card', true>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSustainabilityAtAdamallysPageSustainabilityAtAdamallysPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'sustainability_at_adamallys_pages';
+  info: {
+    description: '';
+    displayName: 'Sustainability at Adamallys Page';
+    pluralName: 'sustainability-at-adamallys-pages';
+    singularName: 'sustainability-at-adamallys-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    BannerContent: Schema.Attribute.Text;
+    BannerImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    Commitment_Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    CSR_Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    fst_content: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sustainability-at-adamallys-page.sustainability-at-adamallys-page'
+    > &
+      Schema.Attribute.Private;
+    OUR_VISION_GOALS_Content: Schema.Attribute.Blocks;
+    OurCommitmentContents: Schema.Attribute.Blocks;
+    publishedAt: Schema.Attribute.DateTime;
+    sec_content: Schema.Attribute.Text;
+    third_content: Schema.Attribute.Text;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Vision_Image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+  };
+}
+
+export interface ApiTechnicalMarineStoresPageTechnicalMarineStoresPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'technical_marine_stores_pages';
+  info: {
+    description: '';
+    displayName: 'Technical Marine Stores Page';
+    pluralName: 'technical-marine-stores-pages';
+    singularName: 'technical-marine-stores-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_background_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    banner_info: Schema.Attribute.String;
+    banner_title: Schema.Attribute.String;
+    Cards: Schema.Attribute.Component<'cards.content-card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-marine-stores-page.technical-marine-stores-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Tags: Schema.Attribute.Component<'cards.list', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1278,15 +1754,28 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::category.category': ApiCategoryCategory;
       'api::certifications-and-memberships-page.certifications-and-memberships-page': ApiCertificationsAndMembershipsPageCertificationsAndMembershipsPage;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::digitalization-and-technology-at-adamallys-page.digitalization-and-technology-at-adamallys-page': ApiDigitalizationAndTechnologyAtAdamallysPageDigitalizationAndTechnologyAtAdamallysPage;
       'api::distributors-and-stockists-page.distributors-and-stockists-page': ApiDistributorsAndStockistsPageDistributorsAndStockistsPage;
+      'api::dry-docking-service-page.dry-docking-service-page': ApiDryDockingServicePageDryDockingServicePage;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::industrial-and-energy-sector-supplies-page.industrial-and-energy-sector-supplies-page': ApiIndustrialAndEnergySectorSuppliesPageIndustrialAndEnergySectorSuppliesPage;
+      'api::marine-logistics-and-warehousing-page.marine-logistics-and-warehousing-page': ApiMarineLogisticsAndWarehousingPageMarineLogisticsAndWarehousingPage;
+      'api::marine-ropes-and-mooring-ropes-page.marine-ropes-and-mooring-ropes-page': ApiMarineRopesAndMooringRopesPageMarineRopesAndMooringRopesPage;
       'api::milestone-section.milestone-section': ApiMilestoneSectionMilestoneSection;
       'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
       'api::other-service.other-service': ApiOtherServiceOtherService;
+      'api::privacy-policy-page.privacy-policy-page': ApiPrivacyPolicyPagePrivacyPolicyPage;
+      'api::product.product': ApiProductProduct;
+      'api::provisions-and-bonded-stores-page.provisions-and-bonded-stores-page': ApiProvisionsAndBondedStoresPageProvisionsAndBondedStoresPage;
+      'api::ship-spare-parts-page.ship-spare-parts-page': ApiShipSparePartsPageShipSparePartsPage;
       'api::ship-supply-page.ship-supply-page': ApiShipSupplyPageShipSupplyPage;
+      'api::sustainability-at-adamallys-page.sustainability-at-adamallys-page': ApiSustainabilityAtAdamallysPageSustainabilityAtAdamallysPage;
+      'api::technical-marine-stores-page.technical-marine-stores-page': ApiTechnicalMarineStoresPageTechnicalMarineStoresPage;
       'api::why-choose-adamally.why-choose-adamally': ApiWhyChooseAdamallyWhyChooseAdamally;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

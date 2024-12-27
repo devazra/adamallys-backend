@@ -17,7 +17,7 @@
     },
     "Hero": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "banner.landing-page-video-slider"
     },
     "CertificationsMemberships": {
