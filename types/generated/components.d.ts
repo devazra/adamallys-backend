@@ -146,6 +146,17 @@ export interface CardsMilestoneCard extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsPortCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_port_cards';
+  info: {
+    displayName: 'Port Card';
+  };
+  attributes: {
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Name: Schema.Attribute.String;
+  };
+}
+
 export interface CardsProvisionsCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_provisions_cards';
   info: {
@@ -310,6 +321,7 @@ declare module '@strapi/strapi' {
       'cards.list-card': CardsListCard;
       'cards.marine-ropes-card': CardsMarineRopesCard;
       'cards.milestone-card': CardsMilestoneCard;
+      'cards.port-card': CardsPortCard;
       'cards.provisions-card': CardsProvisionsCard;
       'cards.service-card': CardsServiceCard;
       'cards.title-contnet': CardsTitleContnet;

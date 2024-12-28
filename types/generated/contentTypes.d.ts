@@ -956,6 +956,33 @@ export interface ApiOtherServiceOtherService extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPortPort extends Struct.SingleTypeSchema {
+  collectionName: 'ports';
+  info: {
+    description: '';
+    displayName: 'Port Page';
+    pluralName: 'ports';
+    singularName: 'port';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::port.port'> &
+      Schema.Attribute.Private;
+    Oman: Schema.Attribute.Component<'cards.port-card', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    UAE_Ports: Schema.Attribute.Component<'cards.port-card', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPrivacyPolicyPagePrivacyPolicyPage
   extends Struct.SingleTypeSchema {
   collectionName: 'privacy_policy_pages';
@@ -1769,6 +1796,7 @@ declare module '@strapi/strapi' {
       'api::milestone-section.milestone-section': ApiMilestoneSectionMilestoneSection;
       'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
       'api::other-service.other-service': ApiOtherServiceOtherService;
+      'api::port.port': ApiPortPort;
       'api::privacy-policy-page.privacy-policy-page': ApiPrivacyPolicyPagePrivacyPolicyPage;
       'api::product.product': ApiProductProduct;
       'api::provisions-and-bonded-stores-page.provisions-and-bonded-stores-page': ApiProvisionsAndBondedStoresPageProvisionsAndBondedStoresPage;
