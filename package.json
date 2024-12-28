@@ -22,6 +22,10 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
   "strapi": {
     "uuid": "8a83ec7f-9c33-4348-8fd5-7a6d1caebd8a"
   }
