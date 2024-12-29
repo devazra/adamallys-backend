@@ -38,6 +38,11 @@
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "product"
+    },
+    "specific_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::specific-category.specific-category"
     }
   }
 }

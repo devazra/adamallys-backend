@@ -1043,6 +1043,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     SKU: Schema.Attribute.String;
     Slug: Schema.Attribute.UID<'Title'>;
+    specific_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::specific-category.specific-category'
+    >;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1149,6 +1153,36 @@ export interface ApiShipSupplyPageShipSupplyPage
     Product_and_service: Schema.Attribute.Component<'cards.service-card', true>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpecificCategorySpecificCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'specific_categories';
+  info: {
+    displayName: 'Specific Category';
+    pluralName: 'specific-categories';
+    singularName: 'specific-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::specific-category.specific-category'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID<'Name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1802,6 +1836,7 @@ declare module '@strapi/strapi' {
       'api::provisions-and-bonded-stores-page.provisions-and-bonded-stores-page': ApiProvisionsAndBondedStoresPageProvisionsAndBondedStoresPage;
       'api::ship-spare-parts-page.ship-spare-parts-page': ApiShipSparePartsPageShipSparePartsPage;
       'api::ship-supply-page.ship-supply-page': ApiShipSupplyPageShipSupplyPage;
+      'api::specific-category.specific-category': ApiSpecificCategorySpecificCategory;
       'api::sustainability-at-adamallys-page.sustainability-at-adamallys-page': ApiSustainabilityAtAdamallysPageSustainabilityAtAdamallysPage;
       'api::technical-marine-stores-page.technical-marine-stores-page': ApiTechnicalMarineStoresPageTechnicalMarineStoresPage;
       'api::why-choose-adamally.why-choose-adamally': ApiWhyChooseAdamallyWhyChooseAdamally;
